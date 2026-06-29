@@ -1,0 +1,123 @@
+/*=================calendrier=================*/
+
+.agenda-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.agenda-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    min-width: 180px;
+    text-align: center;
+}
+
+.agenda-header button {
+    background: none;
+    border: 1px solid #333;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.agenda-header button:hover {
+    border-color: #fff;
+}
+
+.calendrier {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.jour {
+    background: none;
+    border: 1px solid #222;
+    color: #888;
+    padding: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.jour:hover {
+    border-color: #555;
+    color: #fff;
+}
+
+.jour.actif {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    font-weight: 600;
+}
+
+
+
+/*=================rappel=================*/
+
+.rappel-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+
+.rappel-zone h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.rappel-zone textarea {
+    background: #111;
+    border: 1px solid #333;
+    color: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.rappel-zone textarea:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.rappel-zone button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+}
+
+.rappel-zone button:hover {
+    opacity: 0.85;
+}
+
+.jour.a-rappel {
+    border-color: #969696;
+}
+
+
+.separation{
+    margin: 35px 0;
+    border-bottom: 1px solid #222;
+}
