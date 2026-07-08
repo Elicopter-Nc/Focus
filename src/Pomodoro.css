@@ -1,0 +1,233 @@
+.pomodoro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 73px);
+    position: fixed;
+    top: 73px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.pomodoro-centre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*=================pomodoro modes=================*/
+.modes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    color: #555;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.mode-btn:hover {
+    color: #fff;
+    background: #222;
+}
+
+.mode-btn.actif {
+    background: #222;
+    color: #fff;
+}
+
+
+/*=================timer=================*/
+
+
+.timer {
+    font-size: 9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.timer.en-cours {
+    color: #fff;
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+}
+
+.timer.en-pause {
+    color: #333;
+}
+
+.pomodoro-boutons {
+    display: flex;
+    gap: 12px;
+}
+
+.pomodoro-boutons button {
+    background: none;
+    border: 1px solid #333;
+    color: #888;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.pomodoro-boutons button:hover {
+    border-color: #555;
+    color: #fff;
+}
+
+.pomodoro-boutons button:first-child {
+    border-color: #fff;
+    color: #fff;
+}
+
+.pomodoro-boutons button:first-child:hover {
+    background: #fff;
+    color: #000;
+}
+
+/*=================footer=================*/
+
+.pomodoro-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    z-index: 10;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-nombre {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/*=================background=================*/
+
+.dropdown-fond {
+    position: relative;
+    margin-left: auto;
+}
+
+.btn-fond {
+    background: none;
+    border: 1px solid #333;
+    color: #888;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+}
+
+.btn-fond:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.dropdown-fond-menu {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 10;
+    min-width: 160px;
+}
+
+.dropdown-fond-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.dropdown-fond-item:hover {
+    background: #222;
+}
+
+.dropdown-fond-item.selected {
+    background: #222;
+    color: #fff;
+}
+
+.fond-preview {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/*=================background actif=================*/
+
+.avec-fond .timer {
+    color: #fff ;
+}
+
+.avec-fond .mode-btn {
+    color: #ccc;
+}
+
+.avec-fond .mode-btn.actif {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.avec-fond .pomodoro-boutons button {
+    border-color: rgba(255,255,255,0.3);
+    color: #ccc;
+}
+
+.avec-fond .pomodoro-boutons button:first-child {
+    border-color: #fff;
+    color: #fff;
+}
+
+.avec-fond .pomodoro-boutons button:first-child:hover {
+    background: #fff;
+    color: #000;
+}
