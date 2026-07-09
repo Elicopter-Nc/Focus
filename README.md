@@ -199,4 +199,4 @@ MIT — libre d'utilisation et de modification.
 
 ---
 
-*Projet réalisé dans le cadre d'un apprentissage de React et Electron — Licence Informatique, Université de la Nouvelle-Calédonie.*
+*Projet réalisé dans le cadre d'un apprentissage personnel de React et Electron *
