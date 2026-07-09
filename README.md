@@ -10,6 +10,8 @@
 
 **Focus** est une application de productivité conçue pour les étudiants. Elle regroupe trois outils essentiels dans une interface sobre et minimaliste (noir & blanc) disponible en version **web** et **desktop** grâce à Electron.
 
+---
+
 ## Aperçu
 
 ### Agenda
@@ -18,13 +20,14 @@
 ### Pomodoro
 ![Pomodoro](.github/assets/pomodoro_preview.png)
 
-![Pomodoro](.github/assets/pomodoro_prievew2.png)
-
+![Pomodoro with background](.github/assets/pomodoro_prievew2.png)
 
 ### Notes
 ![Notes](.github/assets/notes_preview.png)
 
-### Fonctionnalités
+---
+
+## Fonctionnalités
 
 #### 📅 Agenda
 - Calendrier mensuel avec navigation entre les mois
@@ -67,18 +70,13 @@
 ### Prérequis
 
 - [Node.js](https://nodejs.org/) v18 ou supérieur
-- npm
+- Git
 
 ### Cloner le projet
 
 ```bash
 git clone https://github.com/Elicopter-Nc/desktop-app.git
 cd desktop-app
-```
-
-### Installer les dépendances
-
-```bash
 npm install
 ```
 
@@ -86,7 +84,7 @@ npm install
 
 ## Lancer l'application
 
-### Version web
+### Version web (tous OS)
 
 ```bash
 npm run dev
@@ -94,39 +92,57 @@ npm run dev
 
 Ouvre [http://localhost:5173](http://localhost:5173) dans ton navigateur.
 
-### Version desktop (Electron)
+---
 
+### Version desktop — Windows
+
+**En mode développement :**
 ```bash
 npm run electron:dev
 ```
 
-> **Linux uniquement** — si tu as une erreur de sandbox :
-> ```bash
-> # Modifie le script dans package.json pour ajouter --no-sandbox
-> ```
-
----
-
-## Build
-
-### Build web
-
-```bash
-npm run build
-```
-
-Les fichiers sont générés dans le dossier `dist/`.
-
-### Build desktop
-
+**Builder le `.exe` :**
 ```bash
 npm run electron:build
 ```
 
-Les fichiers sont générés dans le dossier `release/` :
-- **Linux** → `.AppImage`
-- **Windows** → `.exe`
-- **macOS** → `.dmg`
+Le fichier installateur `.exe` est généré dans `release/`.
+Tu peux aussi lancer l'app directement sans l'installer :
+```bash
+.\release\win-unpacked\Focus.exe
+```
+
+---
+
+### Version desktop — Linux
+
+**En mode développement :**
+```bash
+npm run electron:dev
+```
+
+> Si tu as une erreur de sandbox, modifie le script `electron:dev` dans `package.json` pour ajouter `--no-sandbox` à la fin de la commande electron.
+
+**Builder le `.AppImage` :**
+```bash
+npm run electron:build -- --no-sandbox
+```
+
+Le fichier `.AppImage` est généré dans `release/`.
+Tu peux aussi lancer l'app directement sans l'installer :
+```bash
+./release/linux-unpacked/focus
+```
+
+---
+
+## Build — résumé
+
+| OS | Commande | Fichier généré |
+|----|----------|----------------|
+| Windows | `npm run electron:build` | `release/*.exe` |
+| Linux | `npm run electron:build -- --no-sandbox` | `release/*.AppImage` |
+| macOS | `npm run electron:build` | `release/*.dmg` |
 
 ---
 
@@ -134,6 +150,8 @@ Les fichiers sont générés dans le dossier `release/` :
 
 ```
 focus/
+├── .github/
+│   └── assets/            ← Screenshots du README
 ├── public/
 │   └── backgrounds/       ← Images de fond du Pomodoro
 ├── src/
