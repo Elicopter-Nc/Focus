@@ -11,6 +11,12 @@ function App() {
   const [pomodorosCompletes, setPomodorosCompletes] = useState(0)
 
   useEffect(() => {
+    if (Notification.permission === 'default') {
+      Notification.requestPermission()
+    }
+  }, [])
+
+  useEffect(() => {
   if (estEnCours) {
     const interval = setInterval(() => {
       setSecondesRestantes(s => s - 1)
@@ -22,8 +28,18 @@ function App() {
   useEffect(() => {
     if (secondesRestantes === 0) {
       setEstEnCours(false)
-      if (mode ==='pomodoro'){
-        setPomodorosCompletes(p => p + 1 )
+      if (mode === 'pomodoro') {
+        setPomodorosCompletes(p => p + 1)
+      }
+
+      // Notification
+      if (Notification.permission === 'granted') {
+        new Notification('Student Hub', {
+          body: mode === 'pomodoro' 
+            ? '🍅 Pomodoro terminé ! Prends une pause.' 
+            : '⏰ Pause terminée ! Au boulot.',
+          icon: '/favicon.ico'
+        })
       }
     }
   }, [secondesRestantes])
@@ -33,7 +49,7 @@ function App() {
   return (
     <div className="app">
       <nav className="navbar">
-        <h1 className="logo">student hub</h1>
+        <h1 className="logo">Focus</h1>
         <div className="tabs">
           <button
             className={ongletActif === 'agenda' ? 'tab active' : 'tab'}
