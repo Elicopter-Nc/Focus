@@ -10,11 +10,6 @@ function App() {
   const [mode, setMode] = useState('pomodoro')
   const [pomodorosCompletes, setPomodorosCompletes] = useState(0)
 
-  useEffect(() => {
-    if (Notification.permission === 'default') {
-      Notification.requestPermission()
-    }
-  }, [])
 
   useEffect(() => {
   if (estEnCours) {
@@ -33,14 +28,11 @@ function App() {
       }
 
       // Notification
-      if (Notification.permission === 'granted') {
-        new Notification('Student Hub', {
-          body: mode === 'pomodoro' 
-            ? '🍅 Pomodoro terminé ! Prends une pause.' 
-            : '⏰ Pause terminée ! Au boulot.',
-          icon: '/favicon.ico'
-        })
-      }
+      new Notification('Focus', {
+        body: mode === 'pomodoro'
+          ? 'Pomodoro terminé ! Prends une pause.'
+          : 'Pause terminée ! Au boulot.'
+      })
     }
   }, [secondesRestantes])
 

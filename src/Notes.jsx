@@ -12,36 +12,41 @@ function Notes() {
       nom: 'Guide',
       notes: [{
         id: '0-1',
-        titre: 'Markdown : les bases',
+        titre: 'Markdown — les bases',
         contenu: markdownGuide
       }]
     }]
   })
-
   const [noteActive, setNoteActive] = useState(null)
   const [modePreview, setModePreview] = useState(true)
   const [dossiersOuverts, setDossiersOuverts] = useState({})
+  const [inputVisible, setInputVisible] = useState(null)
+  const [inputValeur, setInputValeur] = useState('')
 
   useEffect(() => {
     localStorage.setItem('notes-dossiers', JSON.stringify(dossiers))
   }, [dossiers])
 
-  function creerDossier() {
-    const nom = prompt('Nom du dossier :')
-    if (!nom) return
-    const nouveau = { id: Date.now().toString(), nom, notes: [] }
-    setDossiers([...dossiers, nouveau])
-  }
+  function validerInput() {
+    if (!inputValeur.trim()) {
+      setInputVisible(null)
+      return
+    }
 
-  function creerNote(dossierId) {
-    const titre = prompt('Titre de la note :')
-    if (!titre) return
-    const nouvelleNote = { id: Date.now().toString(), titre, contenu: '' }
-    setDossiers(dossiers.map(d =>
-      d.id === dossierId
-        ? { ...d, notes: [...d.notes, nouvelleNote] }
-        : d
-    ))
+    if (inputVisible === 'dossier') {
+      const nouveau = { id: Date.now().toString(), nom: inputValeur, notes: [] }
+      setDossiers([...dossiers, nouveau])
+    } else {
+      const nouvelleNote = { id: Date.now().toString(), titre: inputValeur, contenu: '' }
+      setDossiers(dossiers.map(d =>
+        d.id === inputVisible
+          ? { ...d, notes: [...d.notes, nouvelleNote] }
+          : d
+      ))
+    }
+
+    setInputVisible(null)
+    setInputValeur('')
   }
 
   function toggleDossier(id) {
@@ -58,28 +63,44 @@ function Notes() {
     setNoteActive({ ...noteActive, contenu })
   }
 
-  function supprimerDossier(dossierId){
+  function supprimerDossier(dossierId) {
     setDossiers(dossiers.filter(d => d.id !== dossierId))
   }
 
   function supprimerNote(dossierId, noteId) {
     setDossiers(dossiers.map(d =>
       d.id === dossierId
-      ? { ...d, notes: d.notes.filter(n => n.id !== noteId)}
-      : d
+        ? { ...d, notes: d.notes.filter(n => n.id !== noteId) }
+        : d
     ))
   }
-
-
-
 
   return (
     <div className="notes">
       <div className="notes-sidebar">
         <div className="sidebar-header">
-          <span>Dossier</span>
-          <button className="btn-nouveau" onClick={creerDossier}>+</button>
+          <span>Notes</span>
+          <button className="btn-nouveau" onClick={() => {
+            setInputVisible('dossier')
+            setInputValeur('')
+          }}>+</button>
         </div>
+
+        {inputVisible === 'dossier' && (
+          <div className="sidebar-input">
+            <input
+              autoFocus
+              placeholder="Nom du dossier..."
+              value={inputValeur}
+              onChange={e => setInputValeur(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter') validerInput()
+                if (e.key === 'Escape') setInputVisible(null)
+              }}
+              onBlur={validerInput}
+            />
+          </div>
+        )}
 
         <div className="sidebar-liste">
           {dossiers.map(dossier => (
@@ -89,19 +110,20 @@ function Notes() {
                   <span className="dossier-icone">{dossiersOuverts[dossier.id] ? '▾' : '▸'}</span>
                   {dossier.nom}
                 </span>
-
                 <div className="dossier-actions">
                   <button className="btn-note" onClick={e => {
                     e.stopPropagation()
-                    creerNote(dossier.id)
+                    setInputVisible(dossier.id)
+                    setInputValeur('')
+                    setDossiersOuverts(o => ({ ...o, [dossier.id]: true }))
                   }}>+</button>
-
                   <button className="btn-supprimer-dossier" onClick={e => {
                     e.stopPropagation()
                     supprimerDossier(dossier.id)
                   }}>×</button>
                 </div>
               </div>
+
               {dossiersOuverts[dossier.id] && (
                 <div className="notes-liste">
                   {dossier.notes.map(note => (
@@ -120,6 +142,22 @@ function Notes() {
                       }}>×</button>
                     </div>
                   ))}
+
+                  {inputVisible === dossier.id && (
+                    <div className="sidebar-input">
+                      <input
+                        autoFocus
+                        placeholder="Titre de la note..."
+                        value={inputValeur}
+                        onChange={e => setInputValeur(e.target.value)}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter') validerInput()
+                          if (e.key === 'Escape') setInputVisible(null)
+                        }}
+                        onBlur={validerInput}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </div>

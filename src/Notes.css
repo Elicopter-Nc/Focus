@@ -245,3 +245,27 @@
 }
 .markdown-preview ul { padding-left: 20px; margin-bottom: 12px; }
 .markdown-preview li { margin-bottom: 4px; color: #ccc; }
+
+
+
+
+/*imputs*/
+
+.sidebar-input {
+    padding: 4px 12px;
+}
+
+.sidebar-input input {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.sidebar-input input:focus {
+    border-color: #fff;
+}
