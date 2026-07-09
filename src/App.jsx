@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Agenda from './Agenda'
 import Pomodoro from './Pomodoro'
+import Notes from './Notes'
 
 function App() {
   const [ongletActif, setOngletActif] = useState('agenda')
@@ -66,7 +67,7 @@ function App() {
           setMode={setMode}
           pomodorosCompletes={pomodorosCompletes}
         />}
-        {ongletActif === 'notes' && <p>Onglet Notes</p>}
+        {ongletActif === 'notes' && <Notes/>}
       </main>
     </div>
   )

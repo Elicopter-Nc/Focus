@@ -1,0 +1,247 @@
+.notes {
+    display: flex;
+    height: calc(100vh - 80px);
+    margin: -40px -20px 0;
+}
+
+.notes-sidebar {
+    width: 240px;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 16px;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 0.85rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.btn-nouveau {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-nouveau:hover {
+    color: #fff;
+}
+
+.sidebar-liste {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.dossier-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #888;
+    transition: all 0.2s;
+}
+
+
+.dossier-header:hover {
+    background: #111;
+    color: #fff;
+}
+
+.dossier-icone {
+    margin-right: 8px;
+}
+
+.btn-note {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    opacity: 0;
+}
+
+
+
+.dossier-header:hover .btn-note {
+    opacity: 1;
+    color: #fff;
+}
+
+
+
+.dossier-actions {
+    display: flex;
+    gap: 10px;
+}
+
+
+.dossier-header:hover .btn-note,
+.dossier-header:hover .btn-supprimer-dossier {
+    opacity: 1;
+}
+
+
+
+.notes-liste {
+    padding: 4px 0;
+}
+
+.note-item {
+    padding: 6px 16px 6px 32px;
+    font-size: 0.85rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.note-item:hover {
+    background: #111;
+    color: #fff;
+}
+
+.note-item.active {
+        background: #1a1a1a;
+        color: #fff;
+}
+
+.notes-editeur {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.notes-vide {
+    color: #333;
+    text-align: center;
+    margin-top: 40%;
+}
+
+.note-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-supprimer-note {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.note-item:hover .btn-supprimer-note {
+    opacity: 1;
+    color: #ff4444;
+}
+
+.btn-supprimer-dossier {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.dossier-header:hover .btn-supprimer-dossier {
+    opacity: 1;
+    color: #ff4444;
+}
+
+
+/* note */
+
+.editeur-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.editeur-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.editeur-titre {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.btn-preview {
+    background: none;
+    border: 1px solid #333;
+    color: #888;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-preview:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.editeur-textarea {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    font-family: 'Monaco', 'Courier New', monospace;
+    line-height: 1.7;
+    resize: none;
+    outline: none;
+}
+
+.markdown-preview {
+    flex: 1;
+    color: #f0f0f0;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.markdown-preview h1 { font-size: 1.8rem; margin-bottom: 16px; }
+.markdown-preview h2 { font-size: 1.4rem; margin-bottom: 12px; margin-top: 24px; }
+.markdown-preview h3 { font-size: 1.1rem; margin-bottom: 8px; margin-top: 16px; }
+.markdown-preview p  { margin-bottom: 12px; color: #ccc; }
+.markdown-preview code {
+    background: #1a1a1a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+.markdown-preview pre {
+    background: #1a1a1a;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 12px;
+}
+.markdown-preview ul { padding-left: 20px; margin-bottom: 12px; }
+.markdown-preview li { margin-bottom: 4px; color: #ccc; }
