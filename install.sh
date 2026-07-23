@@ -7,7 +7,7 @@ npm install
 
 # Build l'app
 npm run build
-npx electron-builder --linux --no-sandbox
+npx electron-builder --linux
 
 # Rend l'exécutable accessible
 chmod +x $(pwd)/release/linux-unpacked/focus
@@ -22,7 +22,7 @@ cat > "$BUREAU/Focus.desktop" << EOF
 [Desktop Entry]
 Name=Focus
 Exec=$(pwd)/release/linux-unpacked/focus --no-sandbox
-Icon=$(pwd)/public/icon.png
+Icon=$(pwd)/public/logo_1.png
 Type=Application
 Terminal=false
 Categories=Utility;
