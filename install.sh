@@ -9,6 +9,9 @@ npm install
 npm run build
 npx electron-builder --linux --no-sandbox
 
+# Rend l'exécutable accessible
+chmod +x $(pwd)/release/linux-unpacked/focus
+
 # Crée un raccourci sur le bureau
 BUREAU="$HOME/Bureau"
 if [ ! -d "$BUREAU" ]; then
@@ -27,4 +30,4 @@ EOF
 
 chmod +x "$BUREAU/Focus.desktop"
 
-echo "✅ Focus installé ! Lance l'app depuis ton bureau."
+echo "Focus installé ! Lance l'app depuis ton bureau."
