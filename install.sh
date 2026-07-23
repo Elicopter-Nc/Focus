@@ -18,7 +18,7 @@ if [ ! -d "$BUREAU" ]; then
     BUREAU="$HOME/Desktop"
 fi
 
-cat > "$BUREAU/Focus.desktop" << EOF
+cat > "$BUREAU/Focus.desktop" << DESKTOP
 [Desktop Entry]
 Name=Focus
 Exec=$(pwd)/release/linux-unpacked/focus --no-sandbox
@@ -26,8 +26,13 @@ Icon=$(pwd)/public/logo_1.png
 Type=Application
 Terminal=false
 Categories=Utility;
-EOF
+DESKTOP
 
 chmod +x "$BUREAU/Focus.desktop"
 
-echo "Focus installé ! Lance l'app depuis ton bureau."
+# Installe dans le menu des applications pour pouvoir épingler dans la barre
+mkdir -p ~/.local/share/applications
+cp "$BUREAU/Focus.desktop" ~/.local/share/applications/Focus.desktop
+
+echo "✅ Focus installé !"
+
