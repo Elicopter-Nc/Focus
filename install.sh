@@ -6,18 +6,25 @@ echo "📦 Installation de Focus..."
 npm install
 
 # Build l'app
-npm run electron:build -- --no-sandbox
+npm run build
+npx electron-builder --linux --no-sandbox
 
 # Crée un raccourci sur le bureau
-cat > ~/Bureau/Focus.desktop << EOF
+BUREAU="$HOME/Bureau"
+if [ ! -d "$BUREAU" ]; then
+    BUREAU="$HOME/Desktop"
+fi
+
+cat > "$BUREAU/Focus.desktop" << EOF
 [Desktop Entry]
 Name=Focus
-Exec=$(pwd)/release/linux-unpacked/focus
-Icon=$(pwd)/public/logo_1.png
+Exec=$(pwd)/release/linux-unpacked/focus --no-sandbox
+Icon=$(pwd)/public/icon.png
 Type=Application
+Terminal=false
 Categories=Utility;
 EOF
 
-chmod +x ~/Bureau/Focus.desktop
+chmod +x "$BUREAU/Focus.desktop"
 
-echo "Focus installé ! Lance l'app depuis ton bureau."
+echo "✅ Focus installé ! Lance l'app depuis ton bureau."
