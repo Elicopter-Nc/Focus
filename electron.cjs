@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, protocol } = require('electron')
 const path = require('path')
 
 function createWindow() {
@@ -9,18 +9,16 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true
-    },
-        titleBarStyle: 'hiddenInset',
+        },
         title: 'Focus'
     })
 
-    // En dev → charge le serveur Vite
-    // En prod → charge les fichiers buildés
-    if (process.env.NODE_ENV === 'development') {
-    win.loadURL('http://localhost:5173')
     win.on('page-title-updated', (e) => {
         e.preventDefault()
     })
+
+    if (process.env.NODE_ENV === 'development') {
+        win.loadURL('http://localhost:5173')
     } else {
         win.loadFile(path.join(__dirname, 'dist/index.html'))
     }

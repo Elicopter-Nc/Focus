@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 import './Pomodoro.css'
+import temple from './assets/backgrounds/temple.png'      // ← ici
+import silver from './assets/backgrounds/silver_star.png'
+import blackhole from './assets/backgrounds/blackhole.png'
+import firewatch from './assets/backgrounds/firewatch.png'
+import fleur from './assets/backgrounds/fleur.png'
 
 function Pomodoro({ secondesRestantes, setSecondesRestantes, estEnCours, setEstEnCours, mode, setMode, pomodorosCompletes }) {
 
@@ -8,14 +13,13 @@ function Pomodoro({ secondesRestantes, setSecondesRestantes, estEnCours, setEstE
     const [fond, setFond] = useState(null)
     const [fondDropdownOuvert, setFondDropdownOuvert] = useState(false)
 
-    const fonds = [
+    const fonds = [           
         { nom: 'Aucun', valeur: null },
-        { nom: 'Temple', valeur: '/backgrounds/temple.png' },
-        { nom: 'Silver', valeur: '/backgrounds/silver_star.png' },
-        { nom: 'blackhole', valeur: '/backgrounds/blackhole.png' },
-        { nom: 'firewatch', valeur: '/backgrounds/firewatch.png' },
-        { nom: 'fleur', valeur: '/backgrounds/fleur.png' },
-        
+        { nom: 'Temple', valeur: temple },
+        { nom: 'Silver', valeur: silver },
+        { nom: 'Blackhole', valeur: blackhole },
+        { nom: 'Firewatch', valeur: firewatch },
+        { nom: 'Fleur', valeur: fleur },
     ]
 
     function changerMode(nouveauMode) {
