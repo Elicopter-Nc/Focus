@@ -11,6 +11,21 @@ body {
   min-height: 100vh;
 }
 
+::-webkit-scrollbar{
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background:rgba(77, 77, 77, 0.295);
+  border-radius: 2px;
+}
+
+
+
 
 .app {
   margin: 0 auto;

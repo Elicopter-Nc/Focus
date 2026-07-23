@@ -8,16 +8,22 @@ function App() {
   const [secondesRestantes, setSecondesRestantes] = useState(25 * 60)
   const [estEnCours, setEstEnCours] = useState(false)
   const [mode, setMode] = useState('pomodoro')
-  const [pomodorosCompletes, setPomodorosCompletes] = useState(0)
-
+  const [pomodorosCompletes, setPomodorosCompletes] = useState(() => {
+    const data = localStorage.getItem('pomodoros-completes')
+    return data ? parseInt(data) : 0
+  })
 
   useEffect(() => {
-  if (estEnCours) {
-    const interval = setInterval(() => {
-      setSecondesRestantes(s => s - 1)
-    }, 1000)
-    return () => clearInterval(interval)
-  }
+    localStorage.setItem('pomodoros-completes', pomodorosCompletes)
+  }, [pomodorosCompletes])
+
+  useEffect(() => {
+    if (estEnCours) {
+      const interval = setInterval(() => {
+        setSecondesRestantes(s => s - 1)
+      }, 1000)
+      return () => clearInterval(interval)
+    }
   }, [estEnCours])
 
   useEffect(() => {
@@ -26,8 +32,6 @@ function App() {
       if (mode === 'pomodoro') {
         setPomodorosCompletes(p => p + 1)
       }
-
-      // Notification
       new Notification('Focus', {
         body: mode === 'pomodoro'
           ? 'Pomodoro terminé ! Prends une pause.'
@@ -35,8 +39,6 @@ function App() {
       })
     }
   }, [secondesRestantes])
-
-
 
   return (
     <div className="app">

@@ -1,5 +1,5 @@
 {
-  "name": "desktop-app",
+  "name": "Focus",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.focus.app",
     "productName": "Focus",
+    "icon":"public/logo_2.png",
     "directories": {
       "output": "release"
     },
